@@ -1,0 +1,11 @@
+---
+- name: Install java 11
+  hosts: appserver
+  become: yes
+  tasks:
+    - name: install java on redhat and ubuntu
+      ansible.builtin.package:
+        name: "{{ java_package }}"
+        update_cache: yes
+        state: present
+        
