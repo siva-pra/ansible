@@ -2,6 +2,10 @@
 - name: tomacat9 install
   hosts: appserver
   become: yes
+  vars:
+    - user_name: tomcat
+    - bash_path: /bin/false
+    - user_homedir: /opt/tomcat
   tasks:
     - name: update cache the ubuntu
       ansible.builtin.apt:
@@ -10,5 +14,13 @@
     - name: java install
       ansible.builtin.package:
         name: "{{ java_package }}"
+        state: present
+      when: ansible_facts['os_family'] == "Debian"
+    - name: create tomcat user
+      ansible.builtin.user:
+        name: "{{ user_name }}" 
+        shell: "{{ bash_path }}"
+        create_home: yes
+        home: "{{ user_homedir }}"
         state: present
       when: ansible_facts['os_family'] == "Debian"
