@@ -1,0 +1,10 @@
+---
+- name: tomacat9 install
+  hosts: appserver
+  become: yes
+  tasks:
+    - name: update cache the ubuntu
+      ansible.builtin.apt:
+         update_cache: yes
+      when: ansible_facts['os_family'] == "Debian"
+      
