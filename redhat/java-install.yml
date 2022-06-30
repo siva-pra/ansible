@@ -1,0 +1,11 @@
+---
+- name: Install java 11
+  hosts: all
+  become: yes
+  tasks:
+    - name: install openjdk-ll-jdk in redhat
+      ansible.builtin.yum:
+        name: openjdk-11-jdk
+        update_only: yes
+        state: present
+        
