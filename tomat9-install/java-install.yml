@@ -6,6 +6,7 @@
     - user_name: tomcat
     - bash_path: /bin/false
     - user_homedir: /opt/tomcat
+    - VERSION: 9.0.64
   tasks:
     - name: update cache the ubuntu
       ansible.builtin.apt:
@@ -23,4 +24,9 @@
         create_home: yes
         home: "{{ user_homedir }}"
         state: present
+      when: ansible_facts['os_family'] == "Debian"
+    - name: download tomacat
+      ansible.builtin.get_url:
+        url: "https://dlcdn.apache.org/tomcat/tomcat-9/v{{ VERSION }}/bin/apache-tomcat-{{ VERSION }}.tar.gz"
+        dest: "/tmp/apache-tomcat-{{ VERSION }}.tar.gz"
       when: ansible_facts['os_family'] == "Debian"
