@@ -1,0 +1,15 @@
+all:
+  children:
+    ubuntu:
+      hosts:
+        172.31.6.218:
+        localhost:
+    redhat:
+      hosts:
+       172.31.11.33:
+    appserver:
+      hosts:
+        172.31.6.218:
+        172.31.11.33:
+  
+    
