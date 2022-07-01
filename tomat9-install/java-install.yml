@@ -57,9 +57,15 @@
         owner: "{{ user_name }}" 
         recurse: yes
       when: ansible_facts['os_family'] == "Debian"
+    - name: find the sh files
+      ansible.builtin.find:
+        paths: /opt/tomcat/latest/bin
+        patterns: '*.sh'
+      when: ansible_facts['os_family'] == "Debian"
+      register: 'sh_file_bin'
     - name: print the sh files
       ansible.builtin.debug:
-        var: /opt/tomcat/latest/bin
+        var: "sh_file_bin"
       when: ansible_facts['os_family'] == "Debian"
       register: 'sh_file_bin'
     - name: print the sh files
