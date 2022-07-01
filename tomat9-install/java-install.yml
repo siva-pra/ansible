@@ -81,4 +81,5 @@
         dest: "{{ tomcat_service_file_location }}"
         group: "{{ user_name }}"
         owner: "{{ user_name }}" 
+        remote_src: yes
       when: ansible_facts['os_family'] == "Debian"
