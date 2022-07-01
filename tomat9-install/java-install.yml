@@ -34,8 +34,9 @@
     - name: untar the tomacat
       ansible.builtin.unarchive:
         src: "/tmp/apache-tomcat-{{ VERSION }}.tar.gz"
-        dest: "{{ user_homedir }}/apache-tomcat-{{ VERSION }}"
+        dest: "{{ user_homedir }}"
         remote_src: yes
+        creates: "{{ user_homedir }}/apache-tomcat-{{ VERSION }}"
       when: ansible_facts['os_family'] == "Debian"
     - name: create a symlink for tomcat
       ansible.builtin.file:
