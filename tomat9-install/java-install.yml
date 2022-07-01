@@ -75,11 +75,11 @@
         mode: '0755'
       loop: "{{ sh_file_bin.files }}"
       when: ansible_facts['os_family'] == "Debian"
-    - name: tomcat service files
+    - name: copy the tomcat service file
       ansible.builtin.copy:
         src: 'tomcat.service'
-        dest: "{{ tomcat_service_file_location }}"
-        group: "{{ user_name }}"
-        owner: "{{ user_name }}" 
+        dest: "{{ /etc/systemd/system/tomcat.service }}"
+        owner: "{{ username }}"
+        group: "{{ username }}"
         remote_src: yes
       when: ansible_facts['os_family'] == "Debian"
