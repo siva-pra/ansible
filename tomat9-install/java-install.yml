@@ -78,8 +78,8 @@
     - name: copy the tomcat service file
       ansible.builtin.copy:
         src: 'tomcat.service'
-        dest: "{{ /etc/systemd/system/tomcat.service }}"
-        owner: "{{ username }}"
-        group: "{{ username }}"
+        dest: "{{ tomcat_service_file_location }}"
+        owner: "{{ user_name }}"
+        group: "{{ user_name }}"
         remote_src: yes
       when: ansible_facts['os_family'] == "Debian"
