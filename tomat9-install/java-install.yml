@@ -51,14 +51,14 @@
       when: ansible_facts['os_family'] == "Debian"
     - name: change owner of tomcat
       ansible.builtin.file:
-         path: "{{ user_homedir }}/apache-tomcat-{{ VERSION }}"
-         group: "{{ user_name }}"
-         owner: "{{ user_name }}" 
-         recurse: yes
+        path: "{{ user_homedir }}/apache-tomcat-{{ VERSION }}"
+        group: "{{ user_name }}"
+        owner: "{{ user_name }}" 
+        recurse: yes
       when: ansible_facts['os_family'] == "Debian"
     - name: find the sh files
       ansible.builtin.find:
-         paths: /opt/tomcat/latest/bin
-         patterns: '*.sh'
+        paths: /opt/tomcat/latest/bin
+        patterns: '*.sh'
       when: ansible_facts['os_family'] == "Debian"
       registor: sh_file_bin
