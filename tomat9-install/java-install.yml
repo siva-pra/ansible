@@ -62,7 +62,7 @@
         paths: /opt/tomcat/latest/bin
         patterns: '*.sh'
       when: ansible_facts['os_family'] == "Debian"
-      register: sh_file_bin
+      register: 'sh_file_bin'
     - name: print the sh files
       ansible.builtin.debug:
         var: "sh_file_bin"
@@ -77,7 +77,7 @@
       when: ansible_facts['os_family'] == "Debian"
     - name: tomcat service files
       ansible.builtin.copy:
-        src: tomcat.service
+        src: 'tomcat.service'
         dest: "{{ tomcat_service_file_location }}"
         group: "{{ user_name }}"
         owner: "{{ user_name }}" 
