@@ -7,6 +7,7 @@
     - bash_path: /bin/false
     - user_homedir: /opt/tomcat
     - VERSION: 9.0.64
+    - tomcat_latest: /opt/tomcat/latest
   tasks:
     - name: update cache the ubuntu
       ansible.builtin.apt:
@@ -33,6 +34,14 @@
     - name: untar the tomacat
       ansible.builtin.unarchive:
         src: "/tmp/apache-tomcat-{{ VERSION }}.tar.gz"
-        dest: "{{ user_homedir }}/"
+        dest: "{{ user_homedir }}/apache-tomcat-{{ VERSION }}"
         remote_src: yes
+      when: ansible_facts['os_family'] == "Debian"
+    - name: create a symlink for tomcat
+      ansible.builtin.file:
+        src: "{{ user_homedir }}/apache-tomcat-{{ VERSION }}"
+        dest: "{{ tomcat_latest }}/apache-tomcat-{{ VERSION }}"
+        group: "{{ user_name }}"
+        owner: "{{ user_name }}"
+        state: link
       when: ansible_facts['os_family'] == "Debian"
