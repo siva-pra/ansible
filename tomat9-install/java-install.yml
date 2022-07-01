@@ -67,7 +67,6 @@
       ansible.builtin.debug:
         var: "sh_file_bin"
       when: ansible_facts['os_family'] == "Debian"
-      register: 'sh_file_bin'
     - name: excutable permission .sh files
       ansible.builtin.file:
         path: "{{ item.path }}"
