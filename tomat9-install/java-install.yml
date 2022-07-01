@@ -8,6 +8,7 @@
     - user_homedir: /opt/tomcat
     - VERSION: 9.0.64
     - tomcat_latest: /opt/tomcat/latest
+    - tomcat_service_file_location: /etc/systemd/system/tomcat.service
 
   tasks:
     - name: update cache the ubuntu
@@ -73,4 +74,11 @@
         owner: "{{ user_name }}" 
         mode: '0755'
       loop: "{{ sh_file_bin.files }}"
+      when: ansible_facts['os_family'] == "Debian"
+    - name: tomcat service files
+      ansible.builtin.copy:
+        src: tomcat.servive
+        dest: "{{ tomcat_service_file_location }}"
+        group: "{{ user_name }}"
+        owner: "{{ user_name }}" 
       when: ansible_facts['os_family'] == "Debian"
