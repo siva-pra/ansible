@@ -83,3 +83,10 @@
         group: "{{ user_name }}"
         remote_src: yes
       when: ansible_facts['os_family'] == "Debian"
+    - name: tomat service
+      ansible.builtin.systemd:
+        name: 'tomcat.service'
+        daemon_reload: yes
+        enabled: yes
+        state: restarted
+      when: ansible_facts['os_family'] == "Debian"
