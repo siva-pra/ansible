@@ -8,6 +8,7 @@
     - user_homedir: /opt/tomcat
     - VERSION: 9.0.64
     - tomcat_latest: /opt/tomcat/latest
+
   tasks:
     - name: update cache the ubuntu
       ansible.builtin.apt:
@@ -55,3 +56,8 @@
          owner: "{{ user_name }}" 
          recurse: yes
       when: ansible_facts['os_family'] == "Debian"
+    - name: print the sh files
+      ansible.builtin.debug:
+        var: /opt/tomcat/latest/bin
+      when: ansible_facts['os_family'] == "Debian"
+      registor: sh_file_bin
