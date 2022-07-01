@@ -58,7 +58,7 @@
       when: ansible_facts['os_family'] == "Debian"
     - name: find the sh files
       ansible.builtin.find:
-        paths: /opt/tomcat/latest/bin
-        patterns: '*.sh'
+         paths: /opt/tomcat/latest/bin
+         patterns: '*.sh'
       when: ansible_facts['os_family'] == "Debian"
       registor: sh_file_bin
