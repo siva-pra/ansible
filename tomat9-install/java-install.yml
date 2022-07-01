@@ -61,4 +61,4 @@
         paths: /opt/tomcat/latest/bin
         patterns: '*.sh'
       when: ansible_facts['os_family'] == "Debian"
-      registor: sh_file_bin
+      register: sh_file_bin
