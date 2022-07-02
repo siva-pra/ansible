@@ -2,4 +2,4 @@
   hosts: appserver
   become: yes
   tasks:
-    - include_task: use_playbook.yaml
+    - include_tasks: use_playbook.yaml
