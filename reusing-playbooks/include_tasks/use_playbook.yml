@@ -1,5 +1,5 @@
 ---
-- name: reusing playbooks
+- name: reusing playbook
   hosts: all
   become: yes
   tasks:
