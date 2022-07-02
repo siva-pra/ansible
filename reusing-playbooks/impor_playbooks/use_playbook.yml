@@ -1,0 +1,13 @@
+---
+- import_playbook: java-11-install.yml
+  name: reusing playbooks
+  hosts: appserver
+  become: yes
+  tasks:
+  - name: install 
+    apt:
+      name: "{{ item }}"
+      state: present
+    loop:
+      - git 
+      - tree
