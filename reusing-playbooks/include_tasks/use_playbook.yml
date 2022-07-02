@@ -1,0 +1,12 @@
+---
+- name: reusing playbooks
+  hosts: appserver
+  become: yes
+  tasks:
+  - name: install 
+    apt:
+      name: "{{ item }}"
+      state: present
+    loop:
+      - git 
+      - tree

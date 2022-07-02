@@ -1,0 +1,5 @@
+- name: inlude tasks 
+  hosts: appserver
+  become: yes
+  tasks:
+    - include_task: use_playbook.yaml
