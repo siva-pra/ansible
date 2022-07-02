@@ -4,7 +4,7 @@
   become: yes
   tasks:
     - name: install 
-      apt:
+      package:
         name: "{{ item }}"
         state: present
       loop:
