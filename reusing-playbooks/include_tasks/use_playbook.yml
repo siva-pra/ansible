@@ -1,8 +1,4 @@
 ---
-- name: reusing playbook
-  hosts: all
-  become: yes
-  tasks:
     - name: install tasks
       ansible.builtin.package:
         name: "{{ item }}"
