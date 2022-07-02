@@ -3,8 +3,8 @@
   hosts: all
   become: yes
   tasks:
-    - name: install 
-      package:
+    - name: install tasks
+      ansible.builtin.package:
         name: "{{ item }}"
         state: present
       loop:
