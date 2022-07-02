@@ -1,6 +1,6 @@
 ---
 - name: reusing playbooks
-  hosts: appserver
+  hosts: all
   become: yes
   tasks:
   - name: install 
